@@ -71,46 +71,55 @@ Thus, the combination of fingerprint authentication, password verification, and 
 
 AUTHENTICATION FLOW:
 
-                    START
-                      │
-                      ▼
-                  Power ON
-                      │
-                      ▼
-              LCD : WELCOME
-                      │
-                      ▼
-        LEVEL 1 : PLACE FINGER
-                      │
-                      ▼
-          Fingerprint Matched?
-             ┌────────┴────────┐
-             │                 │
-            YES               NO
-             │                 │
-             ▼                 ▼
-   LEVEL 2 : ENTER PASSWORD   ACCESS DENIED
-             │              (Door Locked)
-             ▼
-       Password Correct?
-             ┌────────┴────────┐
-             │                 │
-            YES               NO
-             │                 │
-             ▼                 ▼
-      DOOR UNLOCKED      ACCESS DENIED
-     (L293D + DC Motor)  (Door Locked)
-             │
-             ▼
-      LEVEL 3 : ADMIN MODE
-      (Admin Authentication)
-             │
-             ▼
-  Enroll / Delete / Manage Users
-             │
-             ▼
-            END
-
+                           START
+                             │
+                             ▼
+                         Power ON
+                             │
+                             ▼
+                    LCD : "WELCOME"
+                             │
+                             ▼
+           LEVEL 1 : FINGERPRINT VERIFICATION
+                             │
+                             ▼
+                  Place Finger on Sensor
+                             │
+                             ▼
+                 Fingerprint Matched?
+                  ┌─────────┴─────────┐
+                  │                   │
+                 YES                 NO
+                  │                   │
+                  ▼                   ▼
+          LEVEL 2 : PASSWORD     ACCESS DENIED
+             VERIFICATION        (Door Locked)
+                  │
+                  ▼
+            Enter Password
+                  │
+                  ▼
+            Password Correct?
+                  ┌─────────┴─────────┐
+                  │                   │
+                 YES                 NO
+                  │                   │
+                  ▼                   ▼
+          Door Unlocked        ACCESS DENIED
+         (L293D + DC Motor)    (Door Locked)
+                  │
+                  ▼
+          LEVEL 3 : ADMIN MODE
+         (Admin Authentication)
+                  │
+                  ▼
+       Enroll / Delete / Manage Users
+                  │
+                  ▼
+             Return to Main Menu
+                  │
+                  ▼
+                  END
 
 RESULT:
 
