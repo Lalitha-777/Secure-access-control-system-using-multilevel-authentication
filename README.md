@@ -71,37 +71,46 @@ Thus, the combination of fingerprint authentication, password verification, and 
 
 AUTHENTICATION FLOW:
 
-Power ON
-    │
-    ▼
-LCD: Welcome
-    │
-    ▼
-Level 1
-Place Finger
-    │
-    ▼
-Fingerprint Match?
- ┌───────┴────────┐
- │Yes             │No
- ▼                ▼
-Enter Password   Access Denied
-(Level 2)         Door Locked
-    │
-    ▼
-Password Correct?
- ┌───────┴────────┐
- │Yes             │No
- ▼                ▼
-Door Unlock      Access Denied
-(L293D + Motor)   Door Locked
-    │
-    ▼
-Admin Mode (Level 3)
-(Admin Password)
-    │
-    ▼
-Enroll / Delete / Manage Users
+                    START
+                      │
+                      ▼
+                  Power ON
+                      │
+                      ▼
+              LCD : WELCOME
+                      │
+                      ▼
+        LEVEL 1 : PLACE FINGER
+                      │
+                      ▼
+          Fingerprint Matched?
+             ┌────────┴────────┐
+             │                 │
+            YES               NO
+             │                 │
+             ▼                 ▼
+   LEVEL 2 : ENTER PASSWORD   ACCESS DENIED
+             │              (Door Locked)
+             ▼
+       Password Correct?
+             ┌────────┴────────┐
+             │                 │
+            YES               NO
+             │                 │
+             ▼                 ▼
+      DOOR UNLOCKED      ACCESS DENIED
+     (L293D + DC Motor)  (Door Locked)
+             │
+             ▼
+      LEVEL 3 : ADMIN MODE
+      (Admin Authentication)
+             │
+             ▼
+  Enroll / Delete / Manage Users
+             │
+             ▼
+            END
+
 
 RESULT:
 
